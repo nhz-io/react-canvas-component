@@ -1,59 +1,48 @@
 import React from 'react';
-import Alt from 'alt';
 const { PropTypes } = React;
-
-import Actions from './Actions.jsx';
-import Store from './Store.jsx';
 
 export default class Component extends React.Component {
   static defaultProps = {
-    store: null, actions: null, flux: null
+    draw     : function() {},
+    realtime : false
   }
 
   static propTypes = {
-    store: PropTypes.object,
-    actions: PropTypes.object,
-    flux: PropTypes.instanceOf(Alt)
-  }
-
-  static contextTypes = {
-    flux: PropTypes.instanceOf(Alt)
+    draw: PropTypes.func,
+    realtime: PropTypes.bool
   }
 
   constructor(props) {
-    const { content } = this;
-    const alt = props.alt || (new Alt();
     super(props);
-    this.store = props.store || null;
-    this.actions = props.actions || null;
-    this.flux = props.flux || null;
-    this.storeChanged = this.storeChanged.bind(this);
-    this.state = {}
+    this.requestAnimationFrameCallback = this.requestAnimationFrameCallback.bind(this);
   }
 
   componentDidMount() {
-    const { context } = this;
-    if (!this.flux) {
-      this.flux = (context && context.flux) ? context.flux : new Alt()
-    }
-    const flux = this.flux;
-    if (!this.actions) {
-      this.actions = flux.createActions(Actions);
-      this.store = flux.createStore(Store,
-        `ComponentStore${Math.random().toString().substr(2,5)}`, this.actions);
-    }
-    if (!this.store) {
-      this.store = flux.createStore(Store,
-        `ComponentStore${Math.random().toString().substr(2,5)}`, this.actions);
-    }
-    this.store.listen(this.storeChanged);
+    this.context2d = this.refs.canvas.getContext('2d');
+    requestAnimationFrame(this.requestAnimationFrameCallback);
   }
 
-  componentWillUnmount() {
-    this.store.unlinsten(this.storeChanged);
+  render() {
+    const { props } = this;
+    const { draw } = props;
+    requestAnimationFrame(this.requestAnimationFrameCallback);
+    return <canvas ref='canvas' key='canvas' {...props} />;
   }
 
-  storeChanged(state) {
-    this.setState(state);
+  requestAnimationFrameCallback(time) {
+    if(this.previousFrameTime !== time) {
+      const { props, context2d } = this;
+      const { realtime, draw } = props;
+      let delta = 0;
+      if(draw && context2d) {
+        if(realtime) {
+          requestAnimationFrame(this.requestAnimationFrameCallback);
+          if(!this.previousFrameTime) { this.previousFrameTime = time }
+          else { delta = time - this.previousFrameTime }
+          this.previousFrameTime = time;
+        }
+        draw({time: time, delta: delta, ctx: context2d});
+      }
+    }
   }
 }

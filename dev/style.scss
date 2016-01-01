@@ -2,7 +2,6 @@ body, html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  text-align: center;
   font-family: Arial;
   color: black;
   background-color: white;
@@ -10,4 +9,9 @@ body, html {
   line-height: 1.2em;
   width: 100%;
   height: 100%;
+}
+
+
+body {
+  font-size: 0;
 }
