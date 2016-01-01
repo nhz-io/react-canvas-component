@@ -1,5 +1,6 @@
 .gitignore
 .npmignore
+.travis.yml
 *.log
 build
 dist
