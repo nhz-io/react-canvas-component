@@ -1,0 +1,8 @@
+.gitignore
+.npmignore
+*.log
+build
+dist
+test
+dev
+webpack.config.babel.js
