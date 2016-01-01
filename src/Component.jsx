@@ -23,8 +23,7 @@ export default class Component extends React.Component {
   }
 
   render() {
-    const { props } = this;
-    const { draw } = props;
+    const { props } = this;    
     requestAnimationFrame(this.requestAnimationFrameCallback);
     return <canvas ref='canvas' key='canvas' {...props} />;
   }
