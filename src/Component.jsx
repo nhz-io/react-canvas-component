@@ -8,8 +8,25 @@ export default class Component extends React.Component {
   }
 
   static propTypes = {
-    draw: PropTypes.func,
-    realtime: PropTypes.bool
+    draw     : PropTypes.func,
+    realtime : PropTypes.bool
+  }
+
+  static contextTypes = {
+    ctx      : PropTypes.object,
+    realtime : PropTypes.bool
+  }
+
+  static childContextTypes = {
+    ctx      : PropTypes.object,
+    realtime : PropTypes.bool
+  }
+
+  getChildContext() {
+    const { context, refs, props } = this;
+    const ctx = (context && context.ctx) || (refs && refs.canvas && refs.canvas.getContext('2d'));
+    const realtime = (context && context.realtime) || props.realtime;
+    return { ctx:ctx, realtime:realtime }
   }
 
   constructor(props) {
@@ -18,29 +35,32 @@ export default class Component extends React.Component {
   }
 
   componentDidMount() {
-    this.context2d = this.refs.canvas.getContext('2d');
     requestAnimationFrame(this.requestAnimationFrameCallback);
   }
 
   render() {
-    const { props } = this;    
+    const { props, context } = this;
     requestAnimationFrame(this.requestAnimationFrameCallback);
-    return <canvas ref='canvas' key='canvas' {...props} />;
+    if(context.ctx) { return <div key='canvas' {...props}>{props.children}</div>; }
+    return <canvas ref='canvas' key='canvas' {...props}>{props.children}</canvas>;
   }
 
   requestAnimationFrameCallback(time) {
     if(this.previousFrameTime !== time) {
-      const { props, context2d } = this;
-      const { realtime, draw } = props;
+      const { props, context, refs } = this;
+      const { draw } = props;
+      const ctx = (context && context.ctx) || (refs && refs.canvas && refs.canvas.getContext('2d'));
+      const realtime = (context && context.realtime) || props.realtime;
+
       let delta = 0;
-      if(draw && context2d) {
+      if(draw && ctx) {
         if(realtime) {
           requestAnimationFrame(this.requestAnimationFrameCallback);
           if(!this.previousFrameTime) { this.previousFrameTime = time }
           else { delta = time - this.previousFrameTime }
           this.previousFrameTime = time;
         }
-        draw({time: time, delta: delta, ctx: context2d});
+        draw({time: time, delta: delta, ctx: ctx});
       }
     }
   }

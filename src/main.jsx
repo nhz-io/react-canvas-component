@@ -1,2 +1,2 @@
 import Component from './Component.jsx';
-export { Component };
+export default Component;
