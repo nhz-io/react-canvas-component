@@ -36,4 +36,4 @@ npm dist
 [travis-url]: https://travis-ci.org/nhz-io/react-canvas-component
 
 [npm-image]: https://nodei.co/npm/react-canvas-component.png
-[npm-url]: https://nodei.co/npm/react-canvas-component
+[npm-url]: https://www.npmjs.com/package/react-canvas-component
