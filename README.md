@@ -7,15 +7,12 @@
 npm install --save react-canvas-component
 ```
 
-## Browser
-* [react-canvac-component.js][min-dist-browser-js-url]
-
 ## Usage
 
 ```ES6
 import Canvas from 'react-canvas-component';
 ...
-<Canvas render={this.renderFrame} width={800} height={600} realtime={true} />
+<Canvas draw={someRenderFunction} width={800} height={600} realtime={true} />
 ```
 
 ## Build
@@ -40,5 +37,3 @@ npm dist
 
 [npm-image]: https://nodei.co/npm/react-canvas-component.png
 [npm-url]: https://nodei.co/npm/react-canvas-component
-
-[min-dist-browser-js-url]: dist/react-canvas-component.js

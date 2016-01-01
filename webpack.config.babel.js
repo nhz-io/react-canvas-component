@@ -15,7 +15,7 @@ if(TARGET === 'start') {
     entry: path.resolve(ROOT_PATH, 'dev/main.jsx'),
     output: {
       path: path.resolve(ROOT_PATH, 'dist'),
-      filename: 'script.js'
+      filename: 'react-canvas-component.js'
     },
     module: {
       loaders: [
@@ -68,7 +68,7 @@ if(TARGET === 'dist') {
     },
     output: {
       path: path.resolve(ROOT_PATH, 'dist'),
-      filename: 'script.js'
+      filename: 'react-canvas-component.js'
     },
     module: {
       loaders: [
