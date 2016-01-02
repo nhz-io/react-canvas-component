@@ -39,6 +39,7 @@ export default class Component extends React.Component {
   }
 
   componentDidMount() {
+    this.forceUpdate();
     requestAnimationFrame(this.requestAnimationFrameCallback);
   }
 
