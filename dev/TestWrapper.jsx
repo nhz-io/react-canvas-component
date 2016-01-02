@@ -53,9 +53,9 @@ export default class TestWrapper extends React.Component {
     return(
       <div>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-        <Component draw={drawBackground} width={width} height={height} realtime={true}>
-          <Component draw={drawLeft} />
-          <Component draw={drawRight} />
+        <Component draw={drawBackground} top={100} left={200} width={width} height={height} realtime={true}>
+          <Component draw={drawLeft} top={250} left={100}/>
+          <Component draw={drawRight} top={-100} left={-100}/>
         </Component>
       </div>
     );

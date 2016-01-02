@@ -4,12 +4,16 @@ const { PropTypes } = React;
 export default class Component extends React.Component {
   static defaultProps = {
     draw     : function() {},
-    realtime : false
+    realtime : false,
+    top      : 0,
+    left     : 0
   }
 
   static propTypes = {
     draw     : PropTypes.func,
-    realtime : PropTypes.bool
+    realtime : PropTypes.bool,
+    top      : PropTypes.number,
+    left     : PropTypes.number
   }
 
   static contextTypes = {
@@ -48,7 +52,7 @@ export default class Component extends React.Component {
   requestAnimationFrameCallback(time) {
     if(this.previousFrameTime !== time) {
       const { props, context, refs } = this;
-      const { draw } = props;
+      const { draw, top, left } = props;
       const ctx = (context && context.ctx) || (refs && refs.canvas && refs.canvas.getContext('2d'));
       const realtime = (context && context.realtime) || props.realtime;
 
@@ -60,7 +64,13 @@ export default class Component extends React.Component {
           else { delta = time - this.previousFrameTime }
           this.previousFrameTime = time;
         }
+        if(top || left) {
+          ctx.translate(left, top);
+        }
         draw({time: time, delta: delta, ctx: ctx});
+        if(top || left) {
+          ctx.translate(-1*left, -1*top);
+        }
       }
     }
   }
