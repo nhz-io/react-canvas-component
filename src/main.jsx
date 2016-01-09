@@ -1,2 +1,3 @@
-import Component from './Component.jsx';
-export default Component;
+import Canvas from './Component.jsx';
+export { Canvas };
+export default Canvas;

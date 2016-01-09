@@ -1,6 +1,6 @@
-# react-canvas-component [![NPM][npm-image]][npm-url]
+# react-canvas-component [![Build Status][travis-image]][travis-url] [![NPM][npm-image]][npm-url]
 
-## React Canvas Component [![Build Status][travis-image]][travis-url]
+## React Canvas Component
 
 ## Install
 ```
@@ -69,10 +69,10 @@ npm dist
 ### [MIT](LICENSE)
 
 ## VERSION
-### 0.0.4
+### 0.0.5
 
 [travis-image]: https://travis-ci.org/nhz-io/react-canvas-component.svg
 [travis-url]: https://travis-ci.org/nhz-io/react-canvas-component
 
-[npm-image]: https://nodei.co/npm/react-canvas-component.png
+[npm-image]: https://img.shields.io/npm/v/react-canvas-component.svg?style=flat
 [npm-url]: https://www.npmjs.com/package/react-canvas-component
