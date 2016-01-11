@@ -68,7 +68,7 @@ npm dist
 
 ### [MIT](LICENSE)
 
-## VERSION
+## [VERSION](HISTORY.md)
 ### 0.0.6
 
 [travis-image]: https://travis-ci.org/nhz-io/react-canvas-component.svg
