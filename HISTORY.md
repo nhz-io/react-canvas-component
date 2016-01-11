@@ -1,4 +1,9 @@
 # History
+## 0.0.6
+* Updated webpack config
+* Prettier package.json
+* Updated .travis.yml with new node versions
+
 ## 0.0.5
 * Proper modular build. Can `import` and `require` now
 

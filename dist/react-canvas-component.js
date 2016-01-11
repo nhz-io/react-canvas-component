@@ -50,16 +50,16 @@ module.exports =
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.Canvas = undefined;
+	exports.ReactCanvasComponent = undefined;
 
-	var _Component = __webpack_require__(1);
+	var _ReactCanvasComponent = __webpack_require__(1);
 
-	var _Component2 = _interopRequireDefault(_Component);
+	var _ReactCanvasComponent2 = _interopRequireDefault(_ReactCanvasComponent);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.Canvas = _Component2.default;
-	exports.default = _Component2.default;
+	exports.ReactCanvasComponent = _ReactCanvasComponent2.default;
+	exports.default = _ReactCanvasComponent2.default;
 
 /***/ },
 /* 1 */
@@ -69,7 +69,7 @@ module.exports =
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -89,7 +89,7 @@ module.exports =
 
 	var PropTypes = _react2.default.PropTypes;
 
-	var Component = (function (_React$Component) {
+	var Component = function (_React$Component) {
 	  _inherits(Component, _React$Component);
 
 	  _createClass(Component, [{
@@ -178,7 +178,7 @@ module.exports =
 	  }]);
 
 	  return Component;
-	})(_react2.default.Component);
+	}(_react2.default.Component);
 
 	Component.defaultProps = {
 	  draw: function draw() {},

@@ -7,24 +7,24 @@ export default class Component extends React.Component {
     realtime : false,
     top      : 0,
     left     : 0
-  }
+  };
 
   static propTypes = {
     draw     : PropTypes.func,
     realtime : PropTypes.bool,
     top      : PropTypes.number,
     left     : PropTypes.number
-  }
+  };
 
   static contextTypes = {
     ctx      : PropTypes.object,
     realtime : PropTypes.bool
-  }
+  };
 
   static childContextTypes = {
     ctx      : PropTypes.object,
     realtime : PropTypes.bool
-  }
+  };
 
   getChildContext() {
     const { context, refs, props } = this;

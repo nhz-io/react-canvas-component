@@ -1,3 +1,3 @@
-import Canvas from './Component.jsx';
-export { Canvas };
-export default Canvas;
+import ReactCanvasComponent from './ReactCanvasComponent.jsx';
+export { ReactCanvasComponent };
+export default ReactCanvasComponent;

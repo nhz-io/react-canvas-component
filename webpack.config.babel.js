@@ -1,44 +1,55 @@
 var path = require('path');
+var pkg = require('./package.json');
 var webpack = require('webpack');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
-var dependencies = require('./package.json').dependencies || {};
 
-var TARGET = process.env.npm_lifecycle_event;
-var ROOT_PATH = path.resolve(__dirname);
+var
+  SRC           = 'src',
+  DEV           = 'dev',
+  DIST          = 'dist',
+  MAIN          = 'main.jsx',
+  HOST          = 'localhost',
+  PORT          = 9000,
+
+  ROOT_PATH     = path.resolve(__dirname),
+  SRC_PATH      = path.resolve(ROOT_PATH, SRC),
+  DEV_PATH      = path.resolve(ROOT_PATH, DEV),
+  DIST_PATH     = path.resolve(ROOT_PATH, DIST),
+  MAIN_SRC_PATH = path.resolve(SRC_PATH, MAIN),
+  MAIN_DEV_PATH = path.resolve(DEV_PATH, MAIN),
+
+  TARGET        = process.env.npm_lifecycle_event;
 
 if(TARGET === 'start') {
   module.exports = {
     resolve: {
       extensions: [ "", ".js", ".jsx", ".es6" ],
-      alias: { src: path.resolve(ROOT_PATH, 'src/') }
+      alias: { src: SRC_PATH }
     },
     devtool: 'eval-source-map',
-    entry: path.resolve(ROOT_PATH, 'dev/main.jsx'),
+    entry: MAIN_DEV_PATH,
     output: {
-      path: path.resolve(ROOT_PATH, 'dist'),
-      filename: 'react-canvas-component.js'
+      path: DIST_PATH,
+      filename: pkg.name + '.js'
     },
     module: {
       loaders: [
         {
           test: /\.(es6|jsx)$/,
           loaders: ['react-hot', 'babel'],
-          include: [
-            path.resolve(ROOT_PATH, 'src/'),
-            path.resolve(ROOT_PATH, 'dev/')
-          ]
+          include: [ SRC_PATH, DEV_PATH ]
         },
         {
           test: /.*\.(gif|png|jpe?g|svg)$/i,
           loaders: [
             'file?hash=sha512&digest=hex&name=[hash].[ext]'
           ],
-          include: path.resolve(ROOT_PATH, 'dev/')
+          include: [ SRC_PATH, DEV_PATH ]
         },
         {
           test: /\.scss$/,
           loaders: [ 'style', 'css', 'sass' ],
-          include: path.resolve(ROOT_PATH, 'dev/')
+          include: [ SRC_PATH, DEV_PATH ]
         }
       ]
     },
@@ -48,11 +59,12 @@ if(TARGET === 'start') {
       hot: true,
       inline: true,
       progress: true,
-      port:9000
+      host: HOST,
+      port: PORT
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
-      new HtmlwebpackPlugin({title: 'React Canvas Component'})
+      new HtmlwebpackPlugin({title: pkg.description})
     ]
   }
 }
@@ -61,19 +73,18 @@ if(TARGET === 'dist') {
   module.exports = {
     resolve: {
       extensions: [ "", ".js", ".jsx", ".es6" ],
-      alias: { src: path.resolve(ROOT_PATH, 'src/') }
+      alias: { src: SRC_PATH }
     },
-    externals: (function() {
-      var key, result = {};
-      for(key in dependencies) { result[key] = key }
-      return result;
+    externals: (function(externals = {}) {
+      for(let key in pkg.dependencies) { externals[key] = key };
+      return externals;
     }()),
-    entry: {
-      'react-canvas-component': path.resolve(ROOT_PATH, 'src/main.jsx'),
-      'react-canvas-component.min': path.resolve(ROOT_PATH, 'src/main.jsx')
-    },
+    entry: (function(entry = {}) {
+      entry[pkg.name] = entry[pkg.name + '.min'] = MAIN_SRC_PATH;
+      return entry;
+    }()),
     output: {
-      path: path.resolve(ROOT_PATH, 'dist'),
+      path: DIST_PATH,
       filename: "[name].js",
       libraryTarget: 'commonjs2',
       library: true
@@ -83,7 +94,7 @@ if(TARGET === 'dist') {
         {
           test: /\.(es6|jsx)$/,
           loader: 'babel',
-          include: path.resolve(ROOT_PATH, 'src'),
+          include: SRC_PATH
         }
       ]
     },
