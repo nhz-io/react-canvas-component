@@ -1,7 +1,7 @@
 {
   "name": "react-canvas-component",
-  "version": "0.0.7",
-  "description": "React Finite State Machine Component",
+  "version": "0.0.8",
+  "description": "React Canvas Component",
   "repository": {
     "type": "git",
     "url": "https://github.com/nhz-io/react-canvas-component.git"
