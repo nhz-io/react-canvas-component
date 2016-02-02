@@ -11,11 +11,13 @@
   },
   "homepage": "https://github.com/nhz-io/react-canvas-component",
   "author": "Ishi Ruy <dev@nhz.io>",
-  "contributors": [{
-    "name": "Ishi Ruy",
-    "email": "dev@nhz.io",
-    "url": "https://github.com/nhz-io"
-  }],
+  "contributors": [
+    {
+      "name": "Ishi Ruy",
+      "email": "dev@nhz.io",
+      "url": "https://github.com/nhz-io"
+    }
+  ],
   "keywords": [
     "nhz-io",
     "nhz.io",
@@ -52,17 +54,20 @@
     "babel-preset-stage-0": "^6.3.13",
     "babel-preset-stage-1": "^6.3.13",
     "css-loader": "^0.23.1",
+    "eslint": "^1.10.3",
+    "eslint-loader": "^1.2.1",
+    "eslint-plugin-react": "^3.16.1",
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^1.7.0",
     "node-sass": "^3.4.2",
+    "react-dom": "^0.14.5",
     "react-hot-loader": "^1.3.0",
     "sass-loader": "^3.1.2",
     "script-loader": "^0.6.1",
     "style-loader": "^0.13.0",
     "uglify-loader": "^1.3.0",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0",
-    "react-dom": "^0.14.5"
+    "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
     "react": "^0.14.5"
