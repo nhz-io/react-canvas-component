@@ -69,7 +69,7 @@ npm start
 ...
 check http://localhost:9000
 ...
-npm dist
+npm run dist
 ```
 
 ## LICENSE
