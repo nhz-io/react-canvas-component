@@ -32,8 +32,9 @@
   "main": "dist/react-canvas-component.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "dist": "node node_modules/webpack/bin/webpack.js"
+    "start": "webpack-dev-server",
+    "dist": "webpack",
+    "prepublish": "webpack"
   },
   "babel": {
     "presets": [
@@ -69,7 +70,7 @@
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
   },
-  "dependencies": {
-    "react": "^0.14.5"
+  "peerDependencies": {
+    "react": "^15"
   }
 }

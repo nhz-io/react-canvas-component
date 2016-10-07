@@ -45,9 +45,10 @@ export default class Component extends React.Component {
 
   render() {
     const { props, context } = this;
+    const { draw, realtime, top, left, ...other } = props;
     requestAnimationFrame(this.requestAnimationFrameCallback);
-    if(context.ctx) { return <div key='canvas' {...props}>{props.children}</div>; }
-    return <canvas ref='canvas' key='canvas' {...props}>{props.children}</canvas>;
+    if(context.ctx) { return <div key='canvas' {...other}>{props.children}</div>; }
+    return <canvas ref='canvas' key='canvas' {...other}>{props.children}</canvas>;
   }
 
   requestAnimationFrameCallback(time) {
