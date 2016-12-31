@@ -78,5 +78,29 @@
   },
   "peerDependencies": {
     "react": "^15"
+  },
+  "xo": {
+    "esnext": true,
+    "space": 4,
+    "semicolon": false,
+    "extends": "xo-react",
+    "plugins": [
+      "react"
+    ],
+    "rules": {
+      "comma-dangle": [
+        1,
+        "always-multiline"
+      ],
+      "react/no-unused-prop-types": [
+        1
+      ],
+      "react/no-string-refs": [
+        1
+      ],
+      "no-unused-vars": [
+        1
+      ]
+    }
   }
 }
