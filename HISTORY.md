@@ -1,4 +1,10 @@
 # History
+
+## 0.0.8
+* Simplified scripts
+* Updated to React 15
+* Not passing `draw`, `realtime`, `top` and `left` to **canvas**
+
 ## 0.0.7
 * Added travis npm autodeployment config
 

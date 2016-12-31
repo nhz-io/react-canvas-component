@@ -1,12 +1,14 @@
-import './style.scss';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import TestWrapper from './TestWrapper.jsx';
+/* global document */
 
-main();
+import './style.scss'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import TestWrapper from './test-wrapper.jsx'
+
+main()
 
 function main() {
-  const div = document.createElement('div');
-  document.body.appendChild(div);
-  ReactDOM.render(<TestWrapper />, div);
+    const div = document.createElement('div')
+    document.body.appendChild(div)
+    ReactDOM.render(<TestWrapper/>, div)
 }
