@@ -1,7 +1,7 @@
 language: node_js
 node_js:
 - '6'
-script: dist
+script: npm run dist
 deploy:
   provider: npm
   email: dev@nhz.io
