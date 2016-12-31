@@ -13,7 +13,7 @@ module.exports = {
     entry: [
         `webpack-dev-server/client?http://localhost:9000`,
         'webpack/hot/only-dev-server',
-        path.resolve(__dirname, 'dev/index.js'),
+        path.resolve(__dirname, 'dev/main.jsx'),
     ],
     module: {
         preLoaders: [
