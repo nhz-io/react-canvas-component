@@ -16,6 +16,11 @@
       "name": "Ishi Ruy",
       "email": "dev@nhz.io",
       "url": "https://github.com/nhz-io"
+    },
+    {
+      "name": "John Weaver",
+      "email": "john@saebyn.info",
+      "url": "https://github.com/saebyn"
     }
   ],
   "keywords": [
@@ -24,10 +29,7 @@
     "react",
     "component",
     "canvas",
-    "react-canvas-component",
-    "webpack",
-    "babel",
-    "es6"
+    "react-canvas-component"
   ],
   "main": "dist/react-canvas-component.js",
   "scripts": {
