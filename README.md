@@ -12,46 +12,28 @@ npm install --save react-canvas-component
 ## Usage
 
 ```javascript
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Canvas from 'react-canvas-component';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Canvas from 'react-canvas-component'
 
-main();
+function drawCanvas({ctx, time}) {
+    const {width, height} = ctx.canvas
+    ctx.save()
+    ctx.clearRect(0, 0, width, height)
+    ctx.fillStyle = 'black'
+    ctx.translate(width / 2, height / 2)
+    ctx.rotate(((time / 10) % 360) * Math.PI / 180)
+    ctx.fillRect(-1 * width / 4, -1 * height / 4, width / 2, height / 2)
+    ctx.restore()
+}
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.drawCanvas = this.drawCanvas.bind(this);
-  }
-
-  render() {
-    return(
-      <Canvas
-        draw={this.drawCanvas}
-        width={400}
-        height={400}
-        realtime={true}
-      />
-    );
-  }
-
-  drawCanvas({ctx, time, delta}) {
-    const { width, height } = ctx.canvas;
-    ctx.save()
-    ctx.clearRect(0, 0, width, height);
-    ctx.fillStyle = 'black';
-    ctx.translate(width/2, height/2);
-    ctx.rotate(((time/10) % 360) * Math.PI/180);
-    ctx.fillRect(-1*width/4, -1*height/4, width/2, height/2);
-    ctx.restore();
-  }
+    render() {
+        return <Canvas draw={drawCanvas} width={400} height={400} realtime/>
+    }
 }
 
-function main() {
-  const div = document.createElement('div');
-  document.body.appendChild(div);
-  ReactDOM.render(<App />, div);
-}
+ReactDOM.render(<App/>, document.body)
 ```
 
 ## Build
