@@ -1,10 +1,13 @@
 node_modules
 .gitignore
 .npmignore
+.editorconfig
 .travis.yml
 *.log
 build
 test
 dev
 src
-webpack.config.babel.js
+webpack.config.js
+rollup.config.js
+.vscode
