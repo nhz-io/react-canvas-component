@@ -4,8 +4,6 @@
 [![NPM][npm-image]][npm-url]
 [![bitHound Code][bithound-image]][bithound-url]
 
-## React Canvas Component
-
 ## Install
 ```
 npm install --save react-canvas-component
