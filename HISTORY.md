@@ -1,6 +1,9 @@
 # History
 
-# 0.1.0
+## 0.1.0
+* Updated to more terse example
+
+## 0.1.0
 * Using **rolup** for release bundling
 * Slight refactoring
 

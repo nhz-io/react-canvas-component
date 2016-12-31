@@ -54,7 +54,7 @@ npm run dist
 
 ## [VERSION](HISTORY.md)
 
-### 0.1.0
+### 0.1.1
 
 [travis-image]: https://travis-ci.org/nhz-io/react-canvas-component.svg
 [travis-url]: https://travis-ci.org/nhz-io/react-canvas-component
