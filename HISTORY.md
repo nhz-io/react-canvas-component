@@ -1,5 +1,9 @@
 # History
 
+# 0.1.0
+* Using **rolup** for release bundling
+* Slight refactoring
+
 ## 0.0.8
 * Simplified scripts
 * Updated to React 15
