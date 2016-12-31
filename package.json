@@ -32,17 +32,10 @@
   "main": "dist/react-canvas-component.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server",
-    "dist": "webpack",
+    "start": "webpack-dev-server --watch --inline --open",
+    "dist": "xo && rollup -c rollup.config.js",
+    "lint": "xo",
     "prepublish": "npm run dist"
-  },
-  "babel": {
-    "presets": [
-      "es2015",
-      "stage-0",
-      "stage-1",
-      "react"
-    ]
   },
   "license": "MIT",
   "devDependencies": {
