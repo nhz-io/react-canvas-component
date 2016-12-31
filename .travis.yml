@@ -1,13 +1,7 @@
 language: node_js
 node_js:
-- '0.11'
-- '0.12'
-- iojs
-- '4.2'
-- '5.1'
-matrix: 
-fast_finish: true
-script: npm run-script dist
+- '6'
+script: dist
 deploy:
   provider: npm
   email: dev@nhz.io
@@ -15,4 +9,6 @@ deploy:
   api_key:
     secure: lp7V4NUEf1ZoG7c41cO5K7ymDGiaZ6S5UgQYUbGjU5OvQ1J9adpiXCUqfhygJVfbDECsYgzafcfUuixhLSmuaj1fySVfiE6lVLZA2lsKOc9fd9gT8xytRW4sqQm161fmVCm9Z9zADFbmN0KGNux0+0vko59YXY23FbHM7JJcywcXeWcD/UKlpjuoHvqYK+z6BiLRdZ6b19oUZuHG6s65g+Bmjr0FYhw8rIVjND01kSz4Y5+RKDsLaRtsWjlzQMAXh3tQYD0WMcypgjr45DkBGz8DZpBz1srkiWFxkFQvPN12YHfc1d6z/JI31bKubDOxEZp3cgjj6L9Md1cRo/1x/sWm37UMMefdZpdXaZHAT/umYrW6Ughmx0DtWyo3JVhv7lnilLmRomkXuCxskXw6sWcThE8hQpInnp5+pTXLF2cneUaEKCvJVRfi2OJicCuVh7vxakWJ5k1Eo379HpblYCyx9hgSV9Hzj1bLSnHi5VVYhG/330UCXVGm795CZIAHtiX9xIW5w2XzjlKh+0Tvjc5FeyxE2TkOHI5sjcySS5HMFw14NS4uY+qpVjLQ4UkKZ79xmcCM1blWzGAbP6Tiuq1mpWu0cRiN/nHwlHL2TIfju4nDkWwjrnOi1sLVU2kNjY/gexadbslnRCHMH++b4syH5gE6EbxSnE/U6UtInhw=
   on:
+    tags: true
+    branch: master
     repo: nhz-io/react-canvas-component
