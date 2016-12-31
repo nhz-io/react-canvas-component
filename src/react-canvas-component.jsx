@@ -40,9 +40,6 @@ export default class Component extends React.Component {
     constructor(props) {
         super(props)
         this.requestAnimationFrameCallback = this.requestAnimationFrameCallback.bind(this)
-        this._setCanvasRef = c => {
-            this.canvas = c
-        }
     }
 
     componentDidMount() {
