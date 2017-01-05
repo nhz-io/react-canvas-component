@@ -30,8 +30,8 @@ export default class Component extends React.Component {
     }
 
     getChildContext() {
-        const {context, refs, props} = this
-        const ctx = (context && context.ctx) || (refs && refs.canvas && refs.canvas.getContext('2d'))
+        const {context, props, canvasElement} = this
+        const ctx = (context && context.ctx) || (canvasElement && canvasElement.getContext('2d'))
         const realtime = (context && context.realtime) || props.realtime
 
         return {ctx, realtime}
@@ -39,12 +39,17 @@ export default class Component extends React.Component {
 
     constructor(props) {
         super(props)
+        this.refDOM = this.refDOM.bind(this)
         this.requestAnimationFrameCallback = this.requestAnimationFrameCallback.bind(this)
     }
 
     componentDidMount() {
         this.forceUpdate()
         requestAnimationFrame(this.requestAnimationFrameCallback)
+    }
+
+    refDOM(element) {
+        this.canvasElement = element
     }
 
     render() {
@@ -56,14 +61,14 @@ export default class Component extends React.Component {
             return <div key="canvas" {...other}>{props.children}</div>
         }
 
-        return <canvas ref="canvas" key="canvas" {...other}>{props.children}</canvas>
+        return <canvas ref={this.refDOM} key="canvas" {...other}>{props.children}</canvas>
     }
 
     requestAnimationFrameCallback(time) {
         if (this.previousFrameTime !== time) {
-            const {props, context, refs} = this
+            const {props, context, canvasElement} = this
             const {draw, top, left} = props
-            const ctx = (context && context.ctx) || (refs && refs.canvas && refs.canvas.getContext('2d'))
+            const ctx = (context && context.ctx) || (canvasElement && canvasElement.getContext('2d'))
             const realtime = (context && context.realtime) || props.realtime
 
             let delta = 0
