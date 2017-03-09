@@ -19,7 +19,7 @@ module.exports = {
         preLoaders: [
             {
                 test: /\.jsx?$/,
-                loader: 'xo-loader',
+                loader: 'eslint-loader',
                 exclude: /node_modules/,
             },
         ],
