@@ -3,7 +3,6 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-    xo: require('./package.json').xo,
     devtool: 'eval-source-map',
     resolve: {
         alias: {
