@@ -35,23 +35,24 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --watch --inline --open",
-    "dist": "xo && rollup -c rollup.config.js",
-    "lint": "xo",
+    "dist": "eslint --fix . && rollup -c rollup.config.js",
+    "lint": "eslint --fix .",
     "prepublish": "npm run dist"
   },
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.21.0",
+    "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.10",
-    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-class-properties": "^6.19.0",
     "babel-plugin-transform-inline-imports-commonjs": "^1.2.0",
     "babel-plugin-transform-object-rest-spread": "^6.20.2",
     "babel-preset-react": "^6.3.13",
     "css-loader": "^0.26.1",
-    "eslint-config-xo-react": "^0.10.0",
-    "eslint-plugin-react": "^6.8.0",
+    "eslint": "^3.17.1",
+    "eslint-loader": "^1.6.3",
+    "eslint-plugin-react": "^6.10.0",
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.25.0",
     "node-sass": "^3.4.2",
@@ -67,36 +68,10 @@
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.0",
     "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.16.2",
-    "xo": "^0.16.0",
-    "xo-loader": "^0.7.0"
+    "webpack-dev-server": "^1.16.2"
   },
   "peerDependencies": {
     "react": "^15"
-  },
-  "xo": {
-    "esnext": true,
-    "space": 4,
-    "semicolon": false,
-    "extends": "xo-react",
-    "plugins": [
-      "react"
-    ],
-    "rules": {
-      "comma-dangle": [
-        1,
-        "always-multiline"
-      ],
-      "react/no-unused-prop-types": [
-        1
-      ],
-      "react/no-string-refs": [
-        1
-      ],
-      "no-unused-vars": [
-        1
-      ]
-    }
   },
   "pre-push": "lint"
 }
