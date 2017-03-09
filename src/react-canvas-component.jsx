@@ -1,12 +1,11 @@
 /* global requestAnimationFrame */
 
-import React from 'react'
+// eslint-disable-next-line no-unused-vars
+import {Component, PropTypes, default as React} from 'react'
 
-const {PropTypes} = React
-
-export default class Component extends React.Component {
+export default class ReactCanvasComponent extends Component {
     static defaultProps = {
-        draw() {},
+        draw() {}, // eslint-disable-line no-empty-function
         realtime: false,
         top: 0,
         left: 0,
@@ -54,7 +53,7 @@ export default class Component extends React.Component {
 
     render() {
         const {props, context} = this
-        const {draw, realtime, top, left, ...other} = props
+        const {draw, realtime, top, left, ...other} = props  // eslint-disable-line no-unused-vars
         requestAnimationFrame(this.requestAnimationFrameCallback)
 
         if (context.ctx) {
@@ -73,28 +72,31 @@ export default class Component extends React.Component {
 
             let delta = 0
 
-            if (draw && ctx) {
-                if (realtime) {
-                    requestAnimationFrame(this.requestAnimationFrameCallback)
+            if (!draw || !ctx) {
+                return
+            }
 
-                    if (this.previousFrameTime) {
-                        delta = time - this.previousFrameTime
-                    } else {
-                        this.previousFrameTime = time
-                    }
+            if (realtime) {
+                requestAnimationFrame(this.requestAnimationFrameCallback)
 
+                if (this.previousFrameTime) {
+                    delta = time - this.previousFrameTime
+                } 
+                else {
                     this.previousFrameTime = time
                 }
 
-                if (top || left) {
-                    ctx.translate(left, top)
-                }
+                this.previousFrameTime = time
+            }
 
-                draw({time, delta, ctx})
+            if (top || left) {
+                ctx.translate(left, top)
+            } // eslint-disable-line no-unused-vars
 
-                if (top || left) {
-                    ctx.translate(-1 * left, -1 * top)
-                }
+            draw({time, delta, ctx})
+
+            if (top || left) {
+                ctx.translate(-1 * left, -1 * top) // eslint-disable-line no-magic-numbers
             }
         }
     }

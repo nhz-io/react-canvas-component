@@ -1,16 +1,17 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* global window */
 
-import React from 'react'
+// eslint-disable-next-line no-unused-vars
+import {Component, default as React} from 'react'
 import Canvas from 'src/react-canvas-component.jsx'
 
-function drawBackground({ctx, delta, time}) {
+function drawBackground({ctx, delta, time}) { // eslint-disable-line no-unused-vars
     const {width, height} = ctx.canvas
     ctx.fillStyle = 'gray'
     ctx.fillRect(0, 0, width, height)
 }
 
-function drawLeft({ctx, delta, time}) {
+function drawLeft({ctx, delta, time}) { // eslint-disable-line no-unused-vars
     const {width, height} = ctx.canvas
     ctx.save()
     ctx.translate(width / 3, height / 3)
@@ -20,7 +21,7 @@ function drawLeft({ctx, delta, time}) {
     ctx.restore()
 }
 
-function drawRight({ctx, delta, time}) {
+function drawRight({ctx, delta, time}) { // eslint-disable-line no-unused-vars
     const {width, height} = ctx.canvas
     ctx.save()
     ctx.translate(width - (width / 5), height - (height / 5))
@@ -30,12 +31,14 @@ function drawRight({ctx, delta, time}) {
     ctx.restore()
 }
 
-export default class TestWrapper extends React.Component {
-
+export default class TestWrapper extends Component {
     constructor(props) {
         super(props)
         this.handleResize = this.handleResize.bind(this)
-        this.state = {width: window.innerWidth, height: window.innerHeight}
+        this.state = {
+            width: window.innerWidth, 
+            height: window.innerHeight,
+        }
     }
 
     componentDidMount() {
@@ -61,6 +64,6 @@ export default class TestWrapper extends React.Component {
                     <Canvas draw={drawRight}/>
                 </Canvas>
             </div>
-    )
+        )
     }
 }
