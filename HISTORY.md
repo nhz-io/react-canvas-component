@@ -1,5 +1,8 @@
 # History
 
+## 0.1.2
+* using cb ref instead of string
+
 ## 0.1.0
 * Updated to more terse example
 
