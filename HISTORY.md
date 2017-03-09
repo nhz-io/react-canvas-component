@@ -1,5 +1,9 @@
 # History
 
+## 0.1.3
+* switched to eslint instead of xo
+* updated deps
+
 ## 0.1.2
 * using cb ref instead of string
 
