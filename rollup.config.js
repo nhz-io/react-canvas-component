@@ -11,7 +11,7 @@ export default {
         'react',
         'react-dom',
     ],
-    interop: false,
+    interop: true,
     plugins: [
         babel({
             plugins: [
