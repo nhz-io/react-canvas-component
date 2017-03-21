@@ -1,4 +1,6 @@
 # History
+## 0.1.4
+* re-enabled rollup interop - fixes #3
 
 ## 0.1.3
 * switched to eslint instead of xo
