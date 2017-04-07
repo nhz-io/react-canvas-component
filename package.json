@@ -32,11 +32,17 @@
     "react-canvas-component"
   ],
   "main": "dist/react-canvas-component.js",
+  "files": [
+    "es5.js",
+    "dist"
+  ],
   "scripts": {
+    "lint": "eslint --fix .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --watch --inline --open",
-    "dist": "eslint --fix . && rollup -c rollup.config.js",
-    "lint": "eslint --fix .",
+    "dist:es6": "rollup -c rollup.config.js",
+    "dist:es5": "rollup -c rollup.config.js --environment BUILD:es5",
+    "dist": "npm run lint && npm run dist:es5 && npm run dist:es6",
     "prepublish": "npm run dist"
   },
   "license": "MIT",
@@ -46,8 +52,13 @@
     "babel-loader": "^6.4.0",
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-class-properties": "^6.23.0",
+    "babel-plugin-transform-es2015-block-scoping": "^6.24.1",
+    "babel-plugin-transform-es2015-classes": "^6.24.1",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-es2015-shorthand-properties": "^6.24.1",
     "babel-plugin-transform-inline-imports-commonjs": "^1.2.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.23.0",
     "css-loader": "^0.26.4",
     "eslint": "^3.17.1",
