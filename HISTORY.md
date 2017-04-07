@@ -1,4 +1,11 @@
 # History
+## 0.1.5
+* added fix for #5.
+    > In case you are unable to control what gets transpiled and what gets ignored  
+    (When using stuff like [create-react-app](https://github.com/facebookincubator/create-react-app) and need to eject to alter config)  
+    you might experience issues with [uglify-js](https://github.com/mishoo/UglifyJS). In this case, import transpiled version  
+    from `react-canvas-component/es5`
+
 ## 0.1.4
 * re-enabled rollup interop - fixes #3
 
